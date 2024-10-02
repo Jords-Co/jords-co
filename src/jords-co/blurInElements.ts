@@ -39,7 +39,7 @@ export const blurInElements = () => {
             });
             let split = new SplitType(element, {
                 type: 'chars,words,lines',
-                position: 'absolute'
+                position: 'relative'
             });
             gsap.from(split.chars, {
                 ease: 'ease',
