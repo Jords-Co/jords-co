@@ -1,27 +1,12 @@
-import Splide from '@splidejs/splide';
+import { formValidation } from "$digerati/formValidation";
+import { skipToMainContent } from "$digerati/skipToMainContent";
+import { currentYear } from "$digerati/currentYear";
+import { blurInElements } from "$jords-co/blurInElements";
 
-/**
- * Initialise Portfolio Splide.
- */
-function intialisePortfolioSplide() {
-  if ($('.splide').length) {
-    new Splide('.splide', {
-      type: 'loop',
-      perPage: 2,
-      perMove: 1,
-      arrows: true,
-      pagination: false,
-      autoHeight: true,
-      breakpoints: {
-        919: {
-          perPage: 1
-        }
-      }
-    }).mount();
-  }
-}
-
-window.Webflow ||= [];
+window.Webflow || [];
 window.Webflow.push(() => {
-  intialisePortfolioSplide();
+  skipToMainContent();
+  formValidation();
+  currentYear();
+  blurInElements();
 });
