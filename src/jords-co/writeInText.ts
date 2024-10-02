@@ -16,7 +16,8 @@ export const writeInText = () => {
     }
     elements.forEach((element) => {
         const split = new SplitType(element, {
-            types: 'words'
+            types: 'words',
+            position: 'relative'
         });
         const layoutTL = gsap.timeline();
         layoutTL.from(split.words, {
