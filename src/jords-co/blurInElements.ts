@@ -8,7 +8,7 @@ import SplitType from 'split-type';
  * @author <cabal@digerati.design>
  */
 export const blurInElements = () => {
-    const elements = document.querySelectorAll('.blurred-element');
+    const elements = document.querySelectorAll('[dd-text-effect="blur-in"]');
     if (!elements) {
         return;
     }
@@ -16,7 +16,7 @@ export const blurInElements = () => {
     gsap.registerPlugin(ScrollTrigger);
     elements.forEach((element) => {
         if (element.tagName === 'DIV') {
-            element.classList.remove('blurred-element');
+            element.style.opacity = 1;
             gsap.from(element, {
                 ease: 'ease',
                 duration: 1,
@@ -32,7 +32,7 @@ export const blurInElements = () => {
             });
         } else {
             new MutationObserver(function () {
-                element.classList.remove('blurred-element');
+                element.style.opacity = 1;
             }).observe(element, {
                 subtree: true,
                 childList: true

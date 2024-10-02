@@ -7,7 +7,7 @@ import SplitType from 'split-type';
  * @author <cabal@digerati.design>
  */
 export const writeInText = () => {
-    const elements = document.querySelectorAll('.written-element');
+    const elements = document.querySelectorAll('[dd-text-effect="write-in"]');
     if (!elements) {
         return;
     }
