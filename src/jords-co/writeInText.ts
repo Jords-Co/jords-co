@@ -20,8 +20,8 @@ export const writeInText = () => {
             position: 'relative'
         });
         const layoutTL = gsap.timeline();
-        layoutTL.from(split.words, {
-            opacity: 0.25,
+        layoutTL.to(split.words, {
+            color: '#3f8',
             stagger: 0.1,
             scrollTrigger: {
                 trigger: element,

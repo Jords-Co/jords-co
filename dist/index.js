@@ -7770,8 +7770,8 @@
         position: "relative"
       });
       const layoutTL = gsapWithCSS.timeline();
-      layoutTL.from(split2.words, {
-        opacity: 0.25,
+      layoutTL.to(split2.words, {
+        color: "#3f8",
         stagger: 0.1,
         scrollTrigger: {
           trigger: element,
@@ -9200,25 +9200,35 @@
 
   // src/jords-co/animateGrid.ts
   var animateGrid = () => {
-    anime_es_default({
-      targets: "i",
-      scale: [
-        {
-          value: 0.25,
-          easing: "linear",
-          duration: 3e3
-        },
-        {
-          value: 1,
-          easing: "linear",
-          duration: 3e3
-        }
-      ],
-      delay: anime_es_default.stagger(100, {
-        grid: [55, 55],
-        from: "center"
-      }),
-      loop: true
+    const fxContainers = document.querySelectorAll('[dd-grid="fx-container"]');
+    if (!fxContainers) {
+      return;
+    }
+    fxContainers.forEach((fxContainer) => {
+      const elements = fxContainer.querySelectorAll("i");
+      if (!elements) {
+        return;
+      }
+      anime_es_default({
+        targets: elements,
+        scale: [
+          {
+            value: 0.25,
+            easing: "linear",
+            duration: 3e3
+          },
+          {
+            value: 1,
+            easing: "linear",
+            duration: 3e3
+          }
+        ],
+        delay: anime_es_default.stagger(100, {
+          grid: [55, 55],
+          from: "center"
+        }),
+        loop: true
+      });
     });
   };
 
