@@ -4,6 +4,7 @@ import { currentYear } from "$digerati/currentYear";
 import { blurInElements } from "$jords-co/blurInElements";
 import { writeInText } from "$jords-co/writeInText";
 import { populateGrid } from "$jords-co/populateGrid";
+import { animateGrid } from "$jords-co/animateGrid";
 
 window.Webflow || [];
 window.Webflow.push(() => {
@@ -13,4 +14,5 @@ window.Webflow.push(() => {
   blurInElements();
   writeInText();
   populateGrid();
+  animateGrid();
 });
