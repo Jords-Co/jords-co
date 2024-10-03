@@ -10,7 +10,7 @@ export const animateGrid = () => {
         targets: 'i',
         scale: [
             {
-                value: .1,
+                value: 0.25,
                 easing: 'linear',
                 duration: 3000
             },
