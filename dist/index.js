@@ -7785,13 +7785,16 @@
 
   // src/jords-co/populateGrid.ts
   var populateGrid = () => {
-    const fxContainer = document.querySelector('[dd-grid="fx-container"]');
-    if (fxContainer) {
+    const fxContainers = document.querySelectorAll('[dd-grid="fx-container"]');
+    if (!fxContainers) {
+      return;
+    }
+    fxContainers.forEach((fxContainer) => {
       for (let i = 0; i < 3e3; i++) {
         const fx = document.createElement("i");
         fxContainer.appendChild(fx);
       }
-    }
+    });
   };
 
   // node_modules/.pnpm/animejs@3.2.2/node_modules/animejs/lib/anime.es.js
