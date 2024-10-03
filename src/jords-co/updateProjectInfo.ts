@@ -51,5 +51,6 @@ export const updateProjectInfo = () => {
         projectClient.textContent = client;
         projectInfo1.textContent = info1;
         projectInfo2.textContent = info2;
+        slider.style.opacity = 1;
     }, 100);
 };
