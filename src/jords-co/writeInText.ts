@@ -20,8 +20,8 @@ export const writeInText = () => {
             position: 'relative'
         });
         const layoutTL = gsap.timeline();
-        const filteredWords = split.words?.filter((word) => !word.parentElement.classList.contains('text-color-white'));
-        layoutTL.to(filteredWords, {
+        // const filteredWords = split.words?.filter((word) => !word.parentElement.classList.contains('text-color-white'));
+        layoutTL.to(split.words, {
             color: '#3f8',
             stagger: 0.1,
             scrollTrigger: {
