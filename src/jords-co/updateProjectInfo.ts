@@ -36,6 +36,7 @@ export const updateProjectInfo = () => {
             }, 100);
         });
     });
+    /* Timeout to allow Webflow to initalise slider */
     setTimeout(() => {
         const currentSlide = slider.querySelector('.w-slide:not([aria-hidden="true"])');
         if (!currentSlide) {
@@ -52,5 +53,5 @@ export const updateProjectInfo = () => {
         projectInfo1.textContent = info1;
         projectInfo2.textContent = info2;
         slider.style.opacity = 1;
-    }, 100);
+    }, 500);
 };
