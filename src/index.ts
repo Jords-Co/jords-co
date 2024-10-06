@@ -10,13 +10,12 @@ import { homeHeroHeadingImages } from "$jords-co/homeHeroHeadingImages";
 
 window.Webflow || [];
 window.Webflow.push(() => {
-  skipToMainContent();
-  formValidation();
   currentYear();
-  blurInElements();
-  writeInText();
+  skipToMainContent();
+  homeHeroHeadingImages();
   populateGrid();
   animateGrid();
   updateProjectInfo();
-  homeHeroHeadingImages();
+  blurInElements();
+  writeInText();
 });

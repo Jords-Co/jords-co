@@ -17,7 +17,7 @@ export const blurInElements = () => {
     elements.forEach((element) => {
         if (element.tagName === 'DIV') {
             element.style.opacity = 1;
-            gsap.from(element, {
+            gsap.fromTo(element, {
                 ease: 'ease',
                 duration: 1,
                 y: 20,
@@ -29,6 +29,8 @@ export const blurInElements = () => {
                     start: 'bottom bottom',
                     end: 'top center',
                 },
+            }, {
+                y: 0
             });
         } else {
             new MutationObserver(function () {
@@ -39,7 +41,7 @@ export const blurInElements = () => {
             });
             let split = new SplitType(element, {
                 type: 'chars,words,lines',
-                position: 'relative'
+                position: 'absolute'
             });
             gsap.from(split.chars, {
                 ease: 'ease',
