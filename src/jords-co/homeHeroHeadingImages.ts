@@ -13,18 +13,15 @@ export const homeHeroHeadingImages = () => {
     const target1 = document.querySelector('[dd-hero-heading-target="1"]');
     const target2 = document.querySelector('[dd-hero-heading-target="2"]');
     const target3 = document.querySelector('[dd-hero-heading-target="3"]');
-    if (!image1 || !image2 || !image3 || !target1 || !target2 || !target3) {
+    const elements = document.querySelectorAll('[dd-home-hero-blur]');
+    if (!image1 || !image2 || !image3 || !target1 || !target2 || !target3 || !elements) {
         return;
     }
     const splitElements = [];
-    let elements = document.querySelectorAll('[dd-home-hero-blur]');
-    if (!elements) {
-        return;
-    }
-    const sortedElements = Array.from(elements).sort((a, b) => {
+    Array.from(elements).sort((a, b) => {
+        /* Sort elements */
         return a.getAttribute('dd-home-hero-blur') - b.getAttribute('dd-home-hero-blur');
-    });
-    sortedElements.forEach((element) => {
+    }).forEach((element) => {
         if (element.tagName === 'DIV') {
             element.style.opacity = 1;
             splitElements.push(element);
@@ -36,18 +33,20 @@ export const homeHeroHeadingImages = () => {
                 childList: true
             });
             let split = new SplitType(element, {
-                type: 'chars,words,lines',
+                type: 'words,lines',
                 absolute: true
             });
             splitElements.push(split.chars);
         }
     });
+    /* Append Images into Headings */
     target1.classList.add('hide-placeholder');
     target2.classList.add('hide-placeholder');
     target3.classList.add('hide-placeholder');
     target1.append(image1);
     target2.append(image2);
     target3.append(image3);
+    /* Animate */
     gsap.from(splitElements, {
         ease: 'ease',
         duration: 1,

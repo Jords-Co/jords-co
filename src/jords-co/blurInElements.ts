@@ -29,8 +29,6 @@ export const blurInElements = () => {
                     start: 'bottom bottom',
                     end: 'top center',
                 },
-            }, {
-                y: 0
             });
         } else {
             new MutationObserver(function () {
@@ -41,7 +39,7 @@ export const blurInElements = () => {
             });
             let split = new SplitType(element, {
                 type: 'chars,words,lines',
-                position: 'absolute'
+                absolute: true
             });
             gsap.from(split.chars, {
                 ease: 'ease',
