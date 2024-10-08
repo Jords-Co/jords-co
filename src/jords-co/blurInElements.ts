@@ -17,7 +17,7 @@ export const blurInElements = () => {
     elements.forEach((element) => {
         if (element.tagName === 'DIV') {
             element.style.opacity = 1;
-            gsap.fromTo(element, {
+            gsap.from(element, {
                 ease: 'ease',
                 duration: 1,
                 y: 20,
@@ -39,7 +39,7 @@ export const blurInElements = () => {
             });
             let split = new SplitType(element, {
                 type: 'chars,words,lines',
-                absolute: true
+                position: 'relative'
             });
             gsap.from(split.chars, {
                 ease: 'ease',
