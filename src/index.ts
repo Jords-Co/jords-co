@@ -6,13 +6,13 @@ import { writeInText } from "$jords-co/writeInText";
 import { populateGrid } from "$jords-co/populateGrid";
 import { animateGrid } from "$jords-co/animateGrid";
 import { updateProjectInfo } from "$jords-co/updateProjectInfo";
-import { homeHeroHeadingImages } from "$jords-co/homeHeroHeadingImages";
+import { homeHeroAnimation } from "$jords-co/homeHeroAnimation";
 
 window.Webflow || [];
 window.Webflow.push(() => {
   currentYear();
   skipToMainContent();
-  homeHeroHeadingImages();
+  homeHeroAnimation();
   populateGrid();
   animateGrid();
   updateProjectInfo();

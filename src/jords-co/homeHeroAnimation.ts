@@ -2,11 +2,11 @@ import { gsap } from 'gsap';
 import SplitType from 'split-type';
 
 /**
- * Home Hero Heading Images.
+ * Home Hero Animation.
  * 
  * @author <cabal@digerati.design>
  */
-export const homeHeroHeadingImages = () => {
+export const homeHeroAnimation = () => {
     const image1 = document.querySelector('[dd-hero-heading-image="1"]');
     const image2 = document.querySelector('[dd-hero-heading-image="2"]');
     const image3 = document.querySelector('[dd-hero-heading-image="3"]');
