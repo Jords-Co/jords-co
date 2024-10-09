@@ -31,7 +31,8 @@ export const desktopMenuHoverState = () => {
             this.appendChild(navCorners);
             Flip.from(state, {
                 duration: 0.4,
-                ease: 'power1.inOut'
+                ease: 'power1.inOut',
+                absolute: false
             });
         });
         // ———— Move corners back to active link on hover out
@@ -45,7 +46,8 @@ export const desktopMenuHoverState = () => {
             activeLink.appendChild(navCorners);
             Flip.from(state, {
                 duration: 0.4,
-                ease: 'power1.inOut'
+                ease: 'power1.inOut',
+                absolute: false
             });
         });
     });
