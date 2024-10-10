@@ -8,8 +8,8 @@ import { Flip } from 'gsap/Flip';
  */
 export const desktopMenuHoverState = () => {
     const navLinks = document.querySelectorAll('.navbar2_link');
-    const navCorners = document.querySelector('.navbar2_link-hover');
-    if (!navLinks || !navCorners) {
+    const linkHover = document.querySelector('.navbar2_link-hover');
+    if (!navLinks || !linkHover) {
         return;
     }
     gsap.registerPlugin(Flip);
@@ -23,31 +23,35 @@ export const desktopMenuHoverState = () => {
         });
         // ———— Move corners into link we're hovering
         link.addEventListener('mouseenter', function () {
-            const inactiveLink = navCorners.classList.contains('is-inactive');
-            if (inactiveLink) {
-                navCorners.classList.remove('is-inactive');
+            const currentLink = this.classList.contains('w--current');
+            if (currentLink) {
+                return;
             }
-            const state = Flip.getState(navCorners);
-            this.appendChild(navCorners);
+            const inactiveLink = linkHover.classList.contains('is--inactive');
+            if (inactiveLink) {
+                linkHover.classList.remove('is--inactive');
+            }
+            const state = Flip.getState(linkHover);
+            this.appendChild(linkHover);
             Flip.from(state, {
                 duration: 0.4,
                 ease: 'power1.inOut',
-                absolute: false
+                absolute: '.navbar2_link-list'
             });
         });
         // ———— Move corners back to active link on hover out
         link.addEventListener('mouseleave', function () {
-            const state = Flip.getState(navCorners);
+            const state = Flip.getState(linkHover);
             const activeLink = document.querySelector('.navbar2_link.is--active');
             if (!activeLink) {
-                navCorners.classList.add('is-inactive');
+                linkHover.classList.add('is--inactive');
                 return;
             }
-            activeLink.appendChild(navCorners);
+            activeLink.appendChild(linkHover);
             Flip.from(state, {
                 duration: 0.4,
                 ease: 'power1.inOut',
-                absolute: false
+                absolute: '.navbar2_link-list'
             });
         });
     });
