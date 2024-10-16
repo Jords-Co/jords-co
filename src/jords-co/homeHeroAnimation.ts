@@ -53,7 +53,17 @@ export const homeHeroAnimation = () => {
         y: 20,
         blur: 10,
         autoAlpha: 0,
-        stagger: 0.025
+        stagger: 0.025,
+        onComplete: () => {
+            UnicornStudio.init().then(scenes => {
+                const unicornCanvas = document.querySelector('[data-us-project]');
+                if (unicornCanvas) {
+                    unicornCanvas.classList.add('loaded');
+                }
+            }).catch((err) => {
+                console.error(err);
+            });
+        }
     });
     /**
      * Blur Property Filter.
