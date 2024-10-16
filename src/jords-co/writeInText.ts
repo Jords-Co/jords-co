@@ -15,6 +15,9 @@ export const writeInText = () => {
         return window.innerWidth <= 767;
     }
     elements.forEach((element) => {
+        console.log(element);
+        const writeColor = element.getAttribute('dd-write-color');
+        console.log(writeColor);
         const split = new SplitType(element, {
             types: 'words',
             position: 'relative'
@@ -22,7 +25,7 @@ export const writeInText = () => {
         const layoutTL = gsap.timeline();
         // const filteredWords = split.words?.filter((word) => !word.parentElement.classList.contains('text-color-white'));
         layoutTL.to(split.words, {
-            color: '#3f8',
+            color: writeColor,
             stagger: 0.1,
             scrollTrigger: {
                 trigger: element,
