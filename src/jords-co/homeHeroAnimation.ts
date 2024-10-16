@@ -17,53 +17,54 @@ export const homeHeroAnimation = () => {
     if (!image1 || !image2 || !image3 || !target1 || !target2 || !target3 || !elements) {
         return;
     }
-    const splitElements = [];
-    Array.from(elements).sort((a, b) => {
-        /* Sort elements */
-        return a.getAttribute('dd-home-hero-blur') - b.getAttribute('dd-home-hero-blur');
-    }).forEach((element) => {
-        if (element.tagName === 'DIV') {
-            element.style.opacity = 1;
-            splitElements.push(element);
-        } else {
-            new MutationObserver(function () {
+    UnicornStudio.init().then(scenes => {
+        const splitElements = [];
+        Array.from(elements).sort((a, b) => {
+            /* Sort elements */
+            return a.getAttribute('dd-home-hero-blur') - b.getAttribute('dd-home-hero-blur');
+        }).forEach((element) => {
+            if (element.tagName === 'DIV') {
                 element.style.opacity = 1;
-            }).observe(element, {
-                subtree: true,
-                childList: true
-            });
-            let split = new SplitType(element, {
-                type: 'words,lines',
-                absolute: true
-            });
-            splitElements.push(split.chars);
-        }
-    });
-    /* Append Images into Headings */
-    target1.classList.add('hide-placeholder');
-    target2.classList.add('hide-placeholder');
-    target3.classList.add('hide-placeholder');
-    target1.append(image1);
-    target2.append(image2);
-    target3.append(image3);
-    /* Animate */
-    gsap.from(splitElements, {
-        ease: 'ease',
-        duration: 1,
-        y: 20,
-        blur: 10,
-        autoAlpha: 0,
-        stagger: 0.025,
-        onComplete: () => {
-            UnicornStudio.init().then(scenes => {
+                splitElements.push(element);
+            } else {
+                new MutationObserver(function () {
+                    element.style.opacity = 1;
+                }).observe(element, {
+                    subtree: true,
+                    childList: true
+                });
+                let split = new SplitType(element, {
+                    type: 'words,lines',
+                    absolute: true
+                });
+                splitElements.push(split.chars);
+            }
+        });
+        /* Append Images into Headings */
+        target1.classList.add('hide-placeholder');
+        target2.classList.add('hide-placeholder');
+        target3.classList.add('hide-placeholder');
+        target1.append(image1);
+        target2.append(image2);
+        target3.append(image3);
+        /* Animate */
+        gsap.from(splitElements, {
+            ease: 'ease',
+            duration: 1,
+            y: 20,
+            blur: 10,
+            autoAlpha: 0,
+            stagger: 0.025,
+            onComplete: () => {
+                console.log(scenes);
                 const unicornCanvas = document.querySelector('[data-us-project]');
                 if (unicornCanvas) {
                     unicornCanvas.classList.add('loaded');
                 }
-            }).catch((err) => {
-                console.error(err);
-            });
-        }
+            }
+        });
+    }).catch((err) => {
+        console.error(err);
     });
     /**
      * Blur Property Filter.
